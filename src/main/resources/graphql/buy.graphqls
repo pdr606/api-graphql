@@ -1,0 +1,25 @@
+type Buy{
+    id: ID!
+    quantity: Int!
+    status: String!
+    client: Client
+    product: Product!
+}
+
+input BuyInput{
+    id: ID!
+    quantity: Int!
+    status: String!
+    clientId: ID!
+    productId: ID!
+}
+
+extend type Query {
+    buy(id:ID!): Buy
+    buys: [Buy]!
+}
+
+extend type Mutation {
+    saveBuy(buy: BuyInput!):Buy!
+    deleteBuy(id: ID!): Boolean!
+}
